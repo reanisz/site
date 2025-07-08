@@ -244,9 +244,7 @@ struct Point {
 template<>
 struct std::formatter<Point> : std::formatter<std::string> {
   auto format(Point p, std::format_context& ctx) const {
-    return std::formatter<std::string>::format(
-      std::format("[{}, {}]", p.x, p.y),
-      ctx);
+    return std::format_to(ctx.out(), "[{}, {}]", p.x, p.y);
   }
 };
 
